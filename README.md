@@ -9,6 +9,7 @@ Proyecto colaborativo desarrollado para el curso de Programación (UNAD).
 
 ## Estado de Desarrollo
 - [x] Estructura base y sistema de excepciones / logs.
-- [ ] Implementación de Clientes y validaciones.
+- [x] Implementación de Clientes y validaciones.
 - [ ] Clases de Servicios (Polimorfismo).
 - [ ] Gestión de Reservas y Simulaciones (10 operaciones).
+- [ ] Integración final en main.py.
