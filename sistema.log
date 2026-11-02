@@ -1,2 +1,6 @@
-[2026-11-01 22:37:49] ERROR: Cédula inválida: '123'. Debe contener solo números y al menos 7 dígitos.
-[2026-11-01 22:37:49] ERROR: Correo electrónico inválido: 'pedromail.com'.
+[2026-11-02 12:45:42] INFO: [Cliente] Cliente creado correctamente: 12345678 - Carlos Pérez
+[2026-11-02 12:45:42] ERROR: [ClienteInvalidoError] ClienteInvalidoError: Cédula inválida: '123'. Debe contener solo números y al menos 7 dígitos.
+[2026-11-02 12:45:42] ERROR: [ClienteInvalidoError] ClienteInvalidoError: Correo electrónico inválido: 'pedromail.com'.
+[2026-11-02 12:45:42] ERROR: [ClienteInvalidoError] ClienteInvalidoError: Nombre inválido: '12345'. Debe tener al menos 3 caracteres y contener letras.
+[2026-11-02 12:45:42] INFO: [Cliente] Cliente creado correctamente: 55667788 - Laura Díaz
+[2026-11-02 12:45:42] ERROR: [ClienteInvalidoError] ClienteInvalidoError: No se pudo convertir un dato numérico del cliente.
