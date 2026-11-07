@@ -1,5 +1,6 @@
+# logger.py
 # Módulo centralizado de registro de eventos y errores.
-# Todos los módulos del sistema deben usar estas funciones para escribir en sistema.log
+# Todos los módulos del sistema deben usar estas funciones para escribir en sistema.log.
 
 import datetime
 import os
@@ -12,18 +13,19 @@ NIVELES_VALIDOS = ("INFO", "WARNING", "ERROR", "CRITICAL")
 
 
 def registrar_evento(nivel, mensaje, origen=None):
-    """
-    Registra un evento o error en el archivo de logs.
+    # Registra un evento o error en el archivo de logs.
+    #
+    # Parámetros:
+    #   nivel (str): Nivel del evento. Debe ser uno de NIVELES_VALIDOS
+    #                ('INFO', 'WARNING', 'ERROR', 'CRITICAL').
+    #   mensaje (str): Descripción del evento o error.
+    #   origen (str, opcional): Nombre del módulo o clase que genera el evento.
+    #                           Ejemplo: 'Cliente', 'Reserva', 'ServicioSala'.
+    #
+    # Retorna:
+    #   bool: True si el log se escribió correctamente, False si hubo un problema
+    #         al escribir en el archivo.
 
-    Parámetros:
-        nivel (str): Nivel del evento. Debe ser uno de NIVELES_VALIDOS
-                     ('INFO', 'WARNING', 'ERROR', 'CRITICAL').
-        mensaje (str): Descripción del evento o error.
-        origen (str, opcional): Nombre del módulo o clase que genera el evento; Ejemplo: 'Cliente', 'Reserva', 'ServicioSala'.
-
-    Retorna:
-        bool: True si el log se escribió correctamente, False si hubo un problema al escribir en el archivo.
-    """
     # Validación básica del nivel para evitar registros inconsistentes.
     nivel = str(nivel).upper().strip()
     if nivel not in NIVELES_VALIDOS:
@@ -34,7 +36,7 @@ def registrar_evento(nivel, mensaje, origen=None):
     prefijo_origen = f"[{origen}] " if origen else ""
     linea = f"[{timestamp}] {nivel}: {prefijo_origen}{mensaje}\n"
 
-    # La escritura se protege con try/except para que un fallo de disco o permisos no se crashee la app.
+    # La escritura se protege con try/except para que un fallo de disco o permisos no tumbe la aplicación.
     try:
         with open(ARCHIVO_LOG, "a", encoding="utf-8") as archivo:
             archivo.write(linea)
@@ -61,9 +63,7 @@ def registrar_error(mensaje, origen=None):
 
 
 def limpiar_log():
-    # Se crear para limpiar el archivo de logs, ejemplos de uso: antes de una demostración, simulación final.
-    # Considero que se debe eliminar antes de la entrega final.
-    
+    # Se usa para limpiar el archivo de logs antes de una demostración o simulación final.
     try:
         with open(ARCHIVO_LOG, "w", encoding="utf-8") as archivo:
             archivo.write("")

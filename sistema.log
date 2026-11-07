@@ -1,6 +1,11 @@
-[2026-11-02 12:45:42] INFO: [Cliente] Cliente creado correctamente: 12345678 - Carlos Pérez
-[2026-11-02 12:45:42] ERROR: [ClienteInvalidoError] ClienteInvalidoError: Cédula inválida: '123'. Debe contener solo números y al menos 7 dígitos.
-[2026-11-02 12:45:42] ERROR: [ClienteInvalidoError] ClienteInvalidoError: Correo electrónico inválido: 'pedromail.com'.
-[2026-11-02 12:45:42] ERROR: [ClienteInvalidoError] ClienteInvalidoError: Nombre inválido: '12345'. Debe tener al menos 3 caracteres y contener letras.
-[2026-11-02 12:45:42] INFO: [Cliente] Cliente creado correctamente: 55667788 - Laura Díaz
-[2026-11-02 12:45:42] ERROR: [ClienteInvalidoError] ClienteInvalidoError: No se pudo convertir un dato numérico del cliente.
+[2026-11-07 06:36:54] INFO: [Cliente] Cliente creado correctamente: 12345678 - Carlos Pérez
+[2026-11-07 06:36:54] ERROR: [Cliente] Cédula inválida: '123'. Debe contener solo números y al menos 7 dígitos.
+[2026-11-07 06:36:54] ERROR: [Cliente] Correo electrónico inválido: 'pedromail.com'.
+[2026-11-07 06:36:54] ERROR: [Cliente] Nombre inválido: '12345'. Debe tener al menos 3 caracteres y contener letras.
+[2026-11-07 06:36:54] INFO: [Cliente] Cliente creado correctamente: 55667788 - Laura Díaz
+[2026-11-07 06:36:54] ERROR: [test_cliente] No se pudo convertir un dato numérico del cliente. (causa: invalid literal for int() with base 10: 'abc')
+[2026-11-07 06:36:54] INFO: [Cliente] Cliente creado correctamente: 44556677 - Marta Ruiz
+[2026-11-07 06:36:54] ERROR: [Cliente] Cédula inválida: '12'. Debe contener solo números y al menos 7 dígitos.
+[2026-11-07 06:36:54] ERROR: [Cliente] Nombre inválido: no puede ser None.
+[2026-11-07 06:36:54] ERROR: [Cliente] Cédula inválida: no puede ser None.
+[2026-11-07 06:36:54] ERROR: [Cliente] Correo electrónico inválido: no puede ser None.
