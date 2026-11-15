@@ -1,4 +1,3 @@
-# reserva.py
 # Clase Reserva: integra un cliente, un servicio, la duración y el estado.
 #
 # Ciclo de vida de una reserva:
