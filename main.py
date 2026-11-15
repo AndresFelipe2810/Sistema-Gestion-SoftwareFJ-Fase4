@@ -1,4 +1,3 @@
-# main.py
 # Punto de entrada del sistema de gestión de Software FJ.
 # Ejecuta 19 simulaciones de operación (válidas e inválidas) sin base de datos.
 # Todos los eventos y errores se registran en sistema.log y el programa
