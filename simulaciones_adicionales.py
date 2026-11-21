@@ -123,26 +123,24 @@ CASOS = [
 
 def ejecutar_casos():
     numero = 1
-
     for descripcion, funcion in CASOS:
         try:
             funcion()
-
         except SoftwareFJError as error:
+            # Error esperado: se registra en el log y el programa continúa.
             registrar_error(
                 f"Caso adicional {numero} ({descripcion}) - "
-                f"{type(error).__name__}: {error}",
+                f"{type(error)._name_}: {error}",
                 origen="Adicionales"
             )
             print(f"{numero:02d}. ERROR CONTROLADO  {descripcion}: {error}")
-
         else:
+            # Si no falló, el caso no cumple su objetivo: se avisa.
             print(f"{numero:02d}. ATENCIÓN: '{descripcion}' no produjo ningún error.")
-
         numero = numero + 1
 
 
-if __name__ == "__main__":
+if _name_ == "_main_":
     registrar_info("=== Inicio de simulaciones adicionales ===", origen="Adicionales")
     ejecutar_casos()
     registrar_info("=== Fin de simulaciones adicionales ===", origen="Adicionales")
