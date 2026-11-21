@@ -43,11 +43,12 @@ def caso_05_capacidad_negativa():
   # la capacidad de la sala debe ser positiva.
 
 
-# caso 6: cliente con el mismo documento
-def caso_06_documento_duplicado():
-    # No se debe registrar dos clientes con el mismo documento.
-    Cliente("1082345685", "Juan Pérez")
-    Cliente("1082345685", "Pedro Gómez")
+# Caso 16: Reserva con duración de cero horas
+def caso_16_reserva_sin_duracion():
+    # Una reserva debe tener una duración mayor que cero.
+    cliente = Cliente("1082345691", "Luis Alberto", "luis@gmail.com")
+    sala = ReservaSala("S30", "Sala de capacitación", 40000, 10)
+    Reserva(cliente, sala, 0)
 
 # Caso 7: Cliente con correo vacío
 def caso_07_correo_vacio():
@@ -109,7 +110,7 @@ CASOS = [
     ("Reserva con horas negativas", caso_03_reserva_horas_negativas),
     ("Cliente con correo mal escrito", caso_04_correo_mal_escrito),
     ("Sala con capacidad negativa", caso_05_capacidad_negativa),
-    ("Cliente con documento duplicado", caso_06_documento_duplicado),
+   ("Reserva con duración de cero horas", caso_6_reserva_sin_duracion),
     ("Cliente con correo vacío", caso_07_correo_vacio),
     ("Reserva sin cliente", caso_08_reserva_sin_cliente),
     ("Sala con código vacío", caso_09_codigo_sala_vacio),
@@ -130,7 +131,7 @@ def ejecutar_casos():
             # Error esperado: se registra en el log y el programa continúa.
             registrar_error(
                 f"Caso adicional {numero} ({descripcion}) - "
-                f"{type(error)._name_}: {error}",
+                f"{type(error).__name__}: {error}",
                 origen="Adicionales"
             )
             print(f"{numero:02d}. ERROR CONTROLADO  {descripcion}: {error}")
@@ -140,7 +141,7 @@ def ejecutar_casos():
         numero = numero + 1
 
 
-if _name_ == "_main_":
+if __name__ == "_main_":
     registrar_info("=== Inicio de simulaciones adicionales ===", origen="Adicionales")
     ejecutar_casos()
     registrar_info("=== Fin de simulaciones adicionales ===", origen="Adicionales")
