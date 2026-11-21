@@ -116,7 +116,7 @@ CASOS = [
     ("Cliente con documento corto", caso_10_documento_corto),
     ("Cliente con números en el nombre", caso_11_nombre_con_numeros),
     ("Sala sin descripción", caso_12_sala_sin_descripcion),
-    ("Sala con precio en texto", caso_13_precio_en_texto),
+    ("Sala con precio en texto", caso_13_precio_con_texto),
     ("Sala con capacidad en texto", caso_14_capacidad_con_texto),
     ("Cliente con nombre formado por espacios", caso_15_nombre_con_espacios),
 ]
