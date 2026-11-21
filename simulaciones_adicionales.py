@@ -43,10 +43,11 @@ def caso_05_capacidad_negativa():
   # la capacidad de la sala debe ser positiva.
 
 
-# Caso 6: Servicio con nombre vacío
-def caso_06_sala_sin_nombre():
-    sala = ReservaSala("S15", "", 30000, 5)
-  # el servicio debe tener un nombre
+# caso 6: cliente con el mismo documento
+def caso_06_documento_duplicado():
+    # No se debe registrar dos clientes con el mismo documento.
+    Cliente("1082345685", "Juan Pérez")
+    Cliente("1082345685", "Pedro Gómez")
 
 # Caso 7: Cliente con correo vacío
 def caso_07_correo_vacio():
@@ -72,11 +73,11 @@ def caso_10_documento_corto():
     Cliente("123", "Andres Lopez", "andres@gmail.com")
 
 
-# Caso 11: Sala sin codigo
-def caso_11_sala_sin_codigo():
-    # La sala necesita un codigo para poder identificarla.
-    ReservaSala("", "Sala del Norte", 45000, 10)
 
+# caso 11: el nombre del cliente solo debe tener letras
+def caso_11_nombre_con_numeros():
+    # El nombre del cliente no debe contener números.
+    Cliente("1082345688", "Carlos123", "carlos@gmail.com")
 
 # Caso 12: Sala sin descripcion
 def caso_12_sala_sin_descripcion():
@@ -101,21 +102,48 @@ def caso_15_nombre_con_espacios():
     # El nombre no puede estar formado solamente por espacios.
     Cliente("1082345690", "     ", "usuario@gmail.com")
 
+
 CASOS = [
     ("Cliente sin nombre", caso_01_cliente_sin_nombre),
-    ("Sala con capacidad 0", caso_02_sala_capacidad_cero),
+    ("Sala con capacidad cero", caso_02_sala_capacidad_cero),
     ("Reserva con horas negativas", caso_03_reserva_horas_negativas),
     ("Cliente con correo mal escrito", caso_04_correo_mal_escrito),
     ("Sala con capacidad negativa", caso_05_capacidad_negativa),
-    ("Sala sin nombre", caso_06_sala_sin_nombre),
+    ("Cliente con documento duplicado", caso_06_documento_duplicado),
     ("Cliente con correo vacío", caso_07_correo_vacio),
     ("Reserva sin cliente", caso_08_reserva_sin_cliente),
     ("Sala con código vacío", caso_09_codigo_sala_vacio),
     ("Cliente con documento corto", caso_10_documento_corto),
-    ("Sala sin código", caso_11_sala_sin_codigo),
+    ("Cliente con números en el nombre", caso_11_nombre_con_numeros),
     ("Sala sin descripción", caso_12_sala_sin_descripcion),
     ("Sala con precio en texto", caso_13_precio_con_texto),
-    ("Sala con capacidad en texto", caso_14_capacidad_con_texto),
+    ("Sala con capacidad en texto", caso_14_capacidad_en_texto),
     ("Cliente con nombre formado por espacios", caso_15_nombre_con_espacios),
 ]
 
+def ejecutar_casos():
+    numero = 1
+
+    for descripcion, funcion in CASOS:
+        try:
+            funcion()
+
+        except SoftwareFJError as error:
+            registrar_error(
+                f"Caso adicional {numero} ({descripcion}) - "
+                f"{type(error).__name__}: {error}",
+                origen="Adicionales"
+            )
+            print(f"{numero:02d}. ERROR CONTROLADO  {descripcion}: {error}")
+
+        else:
+            print(f"{numero:02d}. ATENCIÓN: '{descripcion}' no produjo ningún error.")
+
+        numero = numero + 1
+
+
+if __name__ == "__main__":
+    registrar_info("=== Inicio de simulaciones adicionales ===", origen="Adicionales")
+    ejecutar_casos()
+    registrar_info("=== Fin de simulaciones adicionales ===", origen="Adicionales")
+    print("Fin: el programa siguió funcionando durante todos los casos.")
