@@ -5,7 +5,7 @@
 # Se ejecuta con:  python simulaciones_adicionales.py
 
 from cliente import Cliente
-from servicios import ReservaSala, AlquilerEquipo
+from servicios import ReservaSala
 from reserva import Reserva
 from excepciones import SoftwareFJError
 from logger import registrar_info, registrar_error
@@ -43,7 +43,7 @@ def caso_05_capacidad_negativa():
   # la capacidad de la sala debe ser positiva.
 
 
-# Caso 16: Reserva con duración de cero horas
+# Caso 06: Reserva con duración de cero horas
 def caso_16_reserva_sin_duracion():
     # Una reserva debe tener una duración mayor que cero.
     cliente = Cliente("1082345691", "Luis Alberto", "luis@gmail.com")
@@ -75,7 +75,7 @@ def caso_10_documento_corto():
 
 
 
-# caso 11: el nombre del cliente solo debe tener letras
+# caso 11: sala con impuesto exagerado
 def caso_11_impuesto_exagerado():
     # El impuesto debe estar entre 0 y 1; aquí se usa 5 (500 %).
     sala = ReservaSala("S12", "Sala Bahía", 50000, 10)
