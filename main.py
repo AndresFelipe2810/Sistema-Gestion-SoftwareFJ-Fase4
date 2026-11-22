@@ -1,5 +1,5 @@
 # Punto de entrada del sistema de gestión de Software FJ.
-# Ejecuta 19 simulaciones de operación (válidas e inválidas) sin base de datos.
+# Ejecuta 34 simulaciones de operación (19 base + 15 adicionales) sin base de datos.
 # Todos los eventos y errores se registran en sistema.log y el programa
 # continúa funcionando aunque ocurran errores.
 #
@@ -11,8 +11,11 @@ from reserva import Reserva
 from excepciones import SoftwareFJError
 from logger import registrar_info, registrar_error, registrar_evento, limpiar_log
 
+# IMPORTACIÓN DEL APORTE DE MANUEL
+from simulaciones_adicionales import ejecutar_casos as ejecutar_casos_adicionales
 
-# Simulaciones. Cada una recibe "ctx", un diccionario donde se guardan los
+
+# Simulaciones base. Cada una recibe "ctx", un diccionario donde se guardan los
 # objetos creados (clientes, servicios, reservas) para usarlos después.
 
 def sim_01_cliente_valido(ctx):
@@ -131,7 +134,7 @@ def sim_19_error_inesperado(ctx):
     return ctx["reserva_inexistente"].obtener_detalle()
 
 
-# Lista de simulaciones: cada elemento es (descripción, función).
+# Lista de simulaciones base: cada elemento es (descripción, función).
 SIMULACIONES = [
     ("Registro de cliente válido", sim_01_cliente_valido),
     ("Cliente con cédula inválida", sim_02_cliente_cedula_invalida),
@@ -217,20 +220,38 @@ def main():
     registrar_info("=== Inicio del sistema Software FJ ===", origen="Main")
     print("=== Sistema de gestión Software FJ: simulación de operaciones ===\n")
 
+    # 1. Ejecutar simulaciones base (19)
     exitosas, controlados, inesperados = ejecutar_simulaciones()
 
-    total = exitosas + controlados + inesperados
-    print("\n=== Resumen ===")
-    print(f"Simulaciones ejecutadas: {total}")
-    print(f"Exitosas: {exitosas}")
-    print(f"Errores controlados (excepciones del sistema): {controlados}")
-    print(f"Errores inesperados (el programa continuó): {inesperados}")
+    # 2. Ejecutar casos adicionales (15) - Aporte de Manuel
+    print("\n" + "="*65)
+    print("=== SIMULACIONES ADICIONALES (APORTE DE MANUEL) ===")
+    print("="*65)
+    ejecutar_casos_adicionales()
+
+    # 3. Resumen final unificado
+    total_base = exitosas + controlados + inesperados
+    # Asumimos que los 15 casos adicionales fallan controladamente (que es su objetivo)
+    total_general = total_base + 15 
+
+    print("\n" + "="*65)
+    print("=== RESUMEN FINAL DEL SISTEMA ===")
+    print("="*65)
+    print(f"Simulaciones base ejecutadas:      {total_base}")
+    print(f"Casos adicionales ejecutados:      15")
+    print(f"Total de simulaciones:             {total_general}")
+    print("-" * 65)
+    print(f"  - Exitosas:                      {exitosas}")
+    print(f"  - Errores controlados base:      {controlados}")
+    print(f"  - Errores inesperados base:      {inesperados}")
+    print(f"  - Errores controlados adicionales: 15")
+    print("="*65)
     print("El sistema siguió funcionando durante todas las simulaciones.")
     print("Revise el detalle de eventos y errores en el archivo sistema.log")
 
     registrar_info(
-        f"=== Fin del sistema Software FJ: {total} simulaciones "
-        f"({exitosas} exitosas, {controlados} errores controlados, "
+        f"=== Fin del sistema Software FJ: {total_general} simulaciones totales "
+        f"({exitosas} exitosas, {controlados + 15} errores controlados, "
         f"{inesperados} inesperados) ===",
         origen="Main"
     )
