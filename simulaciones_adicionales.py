@@ -44,7 +44,7 @@ def caso_05_capacidad_negativa():
 
 
 # Caso 06: Reserva con duración de cero horas
-def caso_16_reserva_sin_duracion():
+def caso_06_reserva_sin_duracion():
     # Una reserva debe tener una duración mayor que cero.
     cliente = Cliente("1082345691", "Luis Alberto", "luis@gmail.com")
     sala = ReservaSala("S30", "Sala de capacitación", 40000, 10)
@@ -111,7 +111,7 @@ CASOS = [
     ("Reserva con horas negativas", caso_03_reserva_horas_negativas),
     ("Cliente con correo mal escrito", caso_04_correo_mal_escrito),
     ("Sala con capacidad negativa", caso_05_capacidad_negativa),
-   ("Reserva con duración de cero horas", caso_16_reserva_sin_duracion),
+   ("Reserva con duración de cero horas", caso_06_reserva_sin_duracion),
     ("Cliente con correo vacío", caso_07_correo_vacio),
     ("Reserva sin cliente", caso_08_reserva_sin_cliente),
     ("Sala con código vacío", caso_09_codigo_sala_vacio),
