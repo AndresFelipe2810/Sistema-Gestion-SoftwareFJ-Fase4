@@ -1,6 +1,13 @@
 # Sistema Integral de Gestión - Software FJ (Fase 4)
 
 Proyecto colaborativo desarrollado para el curso de **Programación (UNAD)**. Sistema orientado a objetos para la gestión de clientes, servicios y reservas, implementado sin bases de datos, con validaciones estrictas, manejo avanzado de excepciones y registro centralizado de eventos.
+## Integrantes y aportes
+
+| Integrante | Usuario de GitHub | Aporte |
+|---|---|---|
+| Andrés Felipe Pinzón Rodríguez | [@AndresFelipe2810](https://github.com/AndresFelipe2810) | Repositorio, `logger.py`, `excepciones.py`, clase base `EntidadBase`, clase `Cliente` y pruebas (`test_cliente.py`). |
+| Janeidis Mercedes Camacho Peña | [@Janeidis](https://github.com/Janeidis) | Módulo de servicios (`servicios.py`), clase `Reserva` (`reserva.py`) y simulaciones en `main.py`. |
+| Manuel Enrique Yepes Cucunuba | [@manuelyepez97-svg](https://github.com/manuelyepez97-svg) | Simulaciones adicionales de casos inválidos (`simulaciones_adicionales.py`). |
 
 ## Estructura del Proyecto
 
